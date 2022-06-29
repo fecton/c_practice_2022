@@ -43,10 +43,10 @@ int main(int argc, const char* argv[]){
 		case 4:
 			break;
 		case 5:
+			About();
 			break;
 		case 6:
-
-			break;
+			Exit();
 		default:
 			Warning("Bad option!");
 		}
