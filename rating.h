@@ -37,7 +37,7 @@ void line(const char* string){
  * @param	None
  * @returns	None
 */
-void menu_of_actions(){
+void Menu_of_actions(){
 	char opname[] = "Menu";
 	char menu[7][38] = {
 		"  0. Menu", // +
@@ -53,9 +53,54 @@ void menu_of_actions(){
 	for(int i=0;i<7;++i){
 		printf("%s\n", menu[i]);
 	}
-	line(opname);	
-
 }
+
+/*
+ * Shows all records from the file
+ *
+ * @param fd	file descriptor
+ * @returns 	None
+*/
+void Show_table(int fd){
+	return;	
+}
+
+/*
+ * Sorts all records by a COURSE and suggest user to
+ * 1. Export data
+ * 2. Show data
+ *
+ * @param fd		file descriptor
+ * @param course	sorting parameter
+*/
+void Sort_by_course(int fd, int course){
+	return;
+}
+
+/*
+ * Sorts all records by a GROUP and suggest user to
+ * 1. Export data
+ * 2. Show data
+ *
+ * @param fd		file descriptor
+ * @param course	sorting parameter
+*/
+void Sort_by_group(int fd, char* course){
+	return;
+}
+
+/*
+ * Sorts all records by a SURNAME and suggest user to
+ * 1. Export data
+ * 2. Show data
+ *
+ * @param fd		file descriptor
+ * @param course	sorting parameter
+*/
+void Sort_by_surname(int fd, char* course){
+	return;
+}
+
 
 /*
  * Prints information about author
