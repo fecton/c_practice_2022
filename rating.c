@@ -1,29 +1,51 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+#include <fcntl.h>
+#include <sys/stat.h>
 
-#include "statuses.h"
 #include "rating.h"
-
-// Struct `record` represents necessary structure
-typedef struct{
-	unsigned int course;	// 4  bytes
-	char group[6];		// 6  bytes
-	char surname[25];	// 25 bytes
-	unsigned int rating[4]; // 4  bytes
-} record;			// Totally: 39 bytes
-
+#include "statuses.h"
 
 // Main function
 int main(int argc, const char* argv[]){
 	lineString("Welcome to \"Rating Cheker\"");
 
 	int fd;
-	char* datafile;
-	datafile = (char*) calloc(1,128);
+	char *datafile, *buffer;
+
+	datafile = (char*) ec_malloc(1024);
+	buffer	 = (char*) ec_malloc(2048);
+
+	memset(datafile, 0, 1024);
+	memset(buffer,   0, 2048);
+
 	strcpy(datafile, "records.txt");
 
-	record* dynamic_array_of_structures = (record*) calloc(1,1024);
+	record records[1024];
+
+	if(fd = open(datafile, O_RDONLY) == -1){
+		Info("File didn't exists! Creating new one...");
+		if(fd = open(datafile, O_WRONLY|O_APPEND|O_CREAT, S_IRUSR|S_IWUSR) == -1){
+			CritError("In function main() during creating new file");	
+		}
+		else{
+			long int ltime = time(0);
+			char* last_modified_time = asctime(localtime(ltime));
+			sprintf(buffer, "Last modified: %s\nCreated by: %s\n", last_modified_time, getenv("USER"));
+			Info(buffer);
+			if(write(fd, buffer, strlen(buffer)) == -1){
+				CritError("In function main() during writing the file");
+			}
+			else{
+				Info("Was written successfully!");
+			}
+		}	
+	}
+	else{
+		Info("Opened successfully, starting writing!");
+	}
 
 	// if file exists -> read array from file
 	// else		  -> initilize empty array
@@ -50,10 +72,13 @@ int main(int argc, const char* argv[]){
 		default:
 			Warning("Bad option!");
 		}
-		printf("Op: ");
+		printf(">> ");
 		scanf("%u", &user_choice);
 	}
 
+	if(close(fd) == -1){
+		CritError("In function main() during closing the file");
+	}
 
 	printf("it works\n");
 

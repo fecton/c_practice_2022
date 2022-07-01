@@ -1,6 +1,7 @@
 #ifndef FUNCS
 #define FUNCS
 
+#include "structs.h"
 /*
  * Prints argument with some symbols on sides
  *
