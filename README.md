@@ -8,13 +8,13 @@
 ![Evaluation](./readme_images/evaluation.jpg)
 
 ## My progress:
-* Certificate       ✓
-* Program           
-* GIT               ✓
-* Report            
-* Electronic sign   
-* Presentation      
-* Video             
+* [Certificate](#certificate)       ✅
+* [Program](#program)           ⏳
+* GIT               ✅
+* [Report](#program)            ⏳
+* [Electronic sign](#electronic-sign)   ❌
+* [Presentation](#presentation)      ⏳
+* [Video](#video)             ⏳
 
 # Stages
 ## Certificate
@@ -34,12 +34,11 @@
 ## Screenshots
 ***None***
 
-
 # Report
 ***None***
 
 # Electronic sign
-***None***
+Needs alternative
 
 # Presentation
 ***None***

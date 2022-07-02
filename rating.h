@@ -1,8 +1,9 @@
 #ifndef FUNCS
 #define FUNCS
 
+#include "structs.h"
 /*
- * This function prints argument with some symbols on sides
+ * Prints argument with some symbols on sides
  *
  * @param	string
  * @returns	None
@@ -13,6 +14,22 @@ void lineString(const char* string){
 	printf("] =-=-=-=-=-\n");
 }
 
+/*
+ * Prints line like "-="
+ * A length of this string is:
+ * "-="(12) + "strlen(string)" + " "(2) + "-="(12)
+ * Or: 26 + strlen(string)
+ *
+ * @param string
+ * @retuns None
+*/
+void line(const char* string){
+	for(int i=0;i<(strlen(string)+12+12+2)/2;++i){
+		printf("-=");
+	}
+	printf("\n");
+}
+
 
 /*
  * Prints the menu of actions for user 
@@ -20,7 +37,8 @@ void lineString(const char* string){
  * @param	None
  * @returns	None
 */
-void menu_of_actions(){
+void Menu_of_actions(){
+	char opname[] = "Menu";
 	char menu[7][38] = {
 		"  0. Menu", // +
 		"  1. Show the table (without sorting)",
@@ -31,16 +49,93 @@ void menu_of_actions(){
 		"  6. Exit"   // +
 	};
 
-	lineString("Menu");
+	lineString(opname);
 	for(int i=0;i<7;++i){
 		printf("%s\n", menu[i]);
 	}
-	
-	for(int i=0;i<(12+12+2+4)/2;++i){
-		printf("-=");
-	}
-	printf("\n");
+}
 
+/*
+ * Shows all records from the file
+ *
+ * @param fd	file descriptor
+ * @returns 	None
+*/
+void Show_table(int fd){
+	return;	
+}
+
+/*
+ * Sorts all records by a COURSE and suggest user to
+ * 1. Export data
+ * 2. Show data
+ *
+ * @param fd		file descriptor
+ * @param course	sorting parameter
+*/
+void Sort_by_course(int fd, int course){
+	return;
+}
+
+/*
+ * Sorts all records by a GROUP and suggest user to
+ * 1. Export data
+ * 2. Show data
+ *
+ * @param fd		file descriptor
+ * @param course	sorting parameter
+*/
+void Sort_by_group(int fd, char* course){
+	return;
+}
+
+/*
+ * Sorts all records by a SURNAME and suggest user to
+ * 1. Export data
+ * 2. Show data
+ *
+ * @param fd		file descriptor
+ * @param course	sorting parameter
+*/
+void Sort_by_surname(int fd, char* course){
+	return;
+}
+
+
+/*
+ * Prints information about author
+ *
+ * @param 	None
+ * @returns 	None
+*/
+void About(){
+	char opname[] = "About";
+	lineString(opname);
+	char about[3][40] = {
+		"GitHub: https://github.com",
+		"Telegram: https://t.me/fectosha",
+		"Telegram channel: https://t.me/varlife",
+	};
+	for(int i=0;i<3;++i){
+		printf("[+] %s\n", about[i]);
+	}
+	line(opname);
+
+}
+
+
+/*
+ * Exit the program
+ *
+ * @param	None
+ * @returns	None
+*/
+void Exit(){
+	char opname[] = "Exit";
+	lineString(opname);
+	printf("Goodbye!\n");
+	line(opname);
+	exit(0);
 }
 
 /*
