@@ -9,7 +9,7 @@
 
 #include "rating.h"
 #include "statuses.h"
-
+#include "sorting.h"
 
 int main(int argc, const char* argv[]){
 	lineString("Welcome to \"Rating Cheker\"");
@@ -21,7 +21,7 @@ int main(int argc, const char* argv[]){
 	buffer	 = (char*) ec_malloc(2048);
 
 	memset(datafile, 0, 1024);
-	memset(buffer,   0, 2048);
+	memset(buffer,   0, 1024);
 
 	strcpy(datafile, "records.txt");
 
@@ -59,45 +59,13 @@ int main(int argc, const char* argv[]){
 			Show_table(fd);
 			break;
 		case 2:
-			int course = 1;
-			
-			printf("Enter a course number: ");
-			scanf("%d", &course);
-
-			if(not(1>=course and course<=5)){
-				Error("Bad number");
-			}
-			else{
-				Sort_by_course(fd, course);
-			}
-
+			Sort_by_course(fd);
 			break;
 		case 3:
-			char group[6];
-				
-			printf("Enter a group: ");
-			scanf("%s", group);
-
-			if(strlen(group) > 6){
-				Error("Bad value");
-			}
-			else{
-				Sort_by_group(fd, group);
-			}
-
+			Sort_by_group(fd);
 			break;
 		case 4:
-			char surname[25];
-
-			printf("Enter a surname: ");
-			scanf("%s", surname);
-			if(strlen(surname) > 25){
-				Error("Bad value");
-			}
-			else{
-				Sort_by_surname(fd, surname);
-			}
-
+			Sort_by_surname(fd);
 			break;
 		case 5:
 			About();
