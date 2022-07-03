@@ -62,7 +62,7 @@ int Compare_strings(const char* string1, const char* string2){
 
 
 /*
- * Insertion sorting
+ * Default insertion sorting
  *
  * @param array
  * @param size
@@ -77,7 +77,7 @@ void Insertion_sorting(int* array, int size){
 		tmp = array[i];
 		j = i - 1;
 
-		while(j>=0 and tmp<=array[j]){
+		while(j>=0 and tmp<=array[j].){
 			array[j+1] = array[j];
 			j--;
 		}
@@ -86,6 +86,28 @@ void Insertion_sorting(int* array, int size){
 }
 
 
+/*
+ * Default insertion sorting
+ *
+ * @param array
+ * @param size
+ * @returns sorted array
+*/
+void Insertion_sorting_by_surname(record* array, int size){
 
+	int tmp, i, j;
+
+
+	for(i=0;i<size;++i){
+		tmp = array[i];
+		j = i - 1;
+
+		while(j>=0 and Compare_strings(tmp.surname, array[j].surname)){
+			array[j+1] = array[j];
+			j--;
+		}
+		array[j+1] = tmp;
+	}
+}
 
 

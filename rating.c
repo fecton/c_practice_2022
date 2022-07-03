@@ -18,7 +18,7 @@ int main(int argc, const char* argv[]){
 	char *datafile, *buffer;
 
 	datafile = (char*) ec_malloc(1024);
-	buffer	 = (char*) ec_malloc(2048);
+	buffer	 = (char*) ec_malloc(1024);
 
 	memset(datafile, 0, 1024);
 	memset(buffer,   0, 1024);
