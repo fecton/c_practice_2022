@@ -7,9 +7,11 @@
 #include <sys/stat.h>
 #include <iso646.h>
 
-#include "rating.h"
+#include "structs.h"
 #include "statuses.h"
+#include "rating.h"
 #include "sorting.h"
+#include "database.h"
 
 int main(int argc, const char* argv[]){
 	lineString("Welcome to \"Rating Cheker\"");
