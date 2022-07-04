@@ -1,7 +1,6 @@
 #ifndef FUNCS
 #define FUNCS
 
-#include "structs.h"
 /*
  * Prints argument with some symbols on sides
  *
@@ -56,16 +55,6 @@ void Menu_of_actions(){
 }
 
 /*
- * Shows all records from the file
- *
- * @param fd	file descriptor
- * @returns 	None
-*/
-void Show_table(int fd){
-	return;	
-}
-
-/*
  * Sorts all records by a COURSE and suggest user to
  * 1. Export data
  * 2. Show data
@@ -73,7 +62,7 @@ void Show_table(int fd){
  * @param fd		file descriptor
  * @param course	sorting parameter
 */
-void Sort_by_course(int fd, int course){
+void Sort_by_course(int fd){
 	return;
 }
 
@@ -85,7 +74,7 @@ void Sort_by_course(int fd, int course){
  * @param fd		file descriptor
  * @param course	sorting parameter
 */
-void Sort_by_group(int fd, char* course){
+void Sort_by_group(int fd){
 	return;
 }
 
@@ -97,7 +86,7 @@ void Sort_by_group(int fd, char* course){
  * @param fd		file descriptor
  * @param course	sorting parameter
 */
-void Sort_by_surname(int fd, char* course){
+void Sort_by_surname(int fd){
 	return;
 }
 
@@ -138,13 +127,6 @@ void Exit(){
 	exit(0);
 }
 
-/*
- * 
- *
-*/
-void printStatus(){
-	return;
-}
 #endif
 
 

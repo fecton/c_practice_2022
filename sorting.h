@@ -77,7 +77,7 @@ void Insertion_sorting(int* array, int size){
 		tmp = array[i];
 		j = i - 1;
 
-		while(j>=0 and tmp<=array[j].){
+		while(j>=0 and tmp<=array[j]){
 			array[j+1] = array[j];
 			j--;
 		}
@@ -94,15 +94,15 @@ void Insertion_sorting(int* array, int size){
  * @returns sorted array
 */
 void Insertion_sorting_by_surname(record* array, int size){
-
-	int tmp, i, j;
+	record tmp;
+	int i, j;
 
 
 	for(i=0;i<size;++i){
 		tmp = array[i];
 		j = i - 1;
 
-		while(j>=0 and Compare_strings(tmp.surname, array[j].surname)){
+		while(j>=0 and Compare_strings(tmp.surname, array[j].surname) == 2){
 			array[j+1] = array[j];
 			j--;
 		}

@@ -1,109 +1,104 @@
-FILE* DB_open(unsigned int openType) {
-	FILE* db;
-	if (openType == 2) {
-		db = fopen(config.path, "wb+");
-	}
-	else if (!(db = fopen(config.path, "rb+"))) {
-		printf("[+] The file '%s' didn't exist and it was created!\n", config.path);
-		db = fopen(config.path, "wb+");
-	}
-	return db;
-}
+/*
+ * Shows all records from the file
+ *
+ * @param fd	file descriptor
+ * @returns 	None
+*/
+void Show_table(int fd) {
+	fd = open("records.txt", O_RDONLY);
 
+	char* rec = (char*)calloc(1, 1024);
+	char* srecord = rec;
+	char tmp = '0';
 
-void DB_show() {
-	FILE* db = DB_open(config, 4);
-
-	char* record = (char*)calloc(1, 1024);
-	char* srecord = record;
-	char tmp;
 	record object;
+
+	int flag = 1;
 
 	char* massive_of_pointers[2] = {
 		object.group, object.surname
 	};
 
-	while (!feof(db)) {
-		fscanf(db, "%c", &tmp);
-		if (tmp == '\0') {
-			printf("[-] The file is empty\n");
-			return;
+	while (flag) {
+		for(int i=0;i<2;++i){
+			while(tmp != '\n'){
+				read(fd, &tmp, 1);
+			}
+			read(fd, &tmp, 1);
 		}
 
-		while (tmp != '\n') {
+		while (flag) {
 			// course
 			do
 			{
-				*record = tmp;
-				record++;
-				fscanf(db, "%c", &tmp);
-			} while(tmp != '#' || feof(db));
+				*rec = tmp;
+				rec++;
+				read(fd, &tmp, 1);
+			} while(tmp != '#' && tmp != '\n');
+
+			if(tmp == '\n'){
+				flag = 0;
+				break;
+			}
+
+			read(fd, &tmp, 1);
+
+			if(tmp == ' '){
+				flag = 0;
+			}
 
 			object.course = (unsigned int) atoi(srecord);
 			memset(srecord, 0, 1024);
-			record = srecord;
-
+			rec = srecord;
 			for (int i = 0; i < 2; ++i) {
 				do
 				{
-					*record = tmp;
-					record++;
-					fscanf(db, "%c", &tmp);
-				} while ((tmp != '#' && tmp != '\n') || feof(db));
-				fscanf(db, "%c", &tmp);
+					*rec = tmp;
+					rec++;
+					read(fd, &tmp, 1);
+				} while ((tmp != '#' && tmp != '\n') );
+				read(fd, &tmp, 1);
 				strcpy(massive_of_pointers[i], srecord);
 				memset(srecord, 0, 1024);
-				record = srecord;
+				rec = srecord;
 			}
+			
 			// rating[4]	
 			for(int i=0; i < 4; ++i){
 				do
 				{
-					*record = tmp;
-					record++;
-					fscanf(db, "%c", &tmp);
-				} while(tmp != '#' || feof(db));
-				fscanf(db, "%c", &tmp);
+					*rec = tmp;
+					rec++;
+					read(fd, &tmp, 1);
+				} while(tmp != '#' && tmp != '\n'); 
+				read(fd, &tmp, 1);
 				object.rating[i] = (unsigned int) atoi(srecord);
 				memset(srecord, 0, 1024);
-				record = srecord;
+				rec = srecord;
 			}
-			printf("%u\t%s\t%s\t(%d %d %d %d)", object.course, object.group, object.surname, object.rating[0], object.rating[1], object.rating[2], object.rating[3]);
+			printf("%u\t%s\t%s\t(%2d %2d %2d %2d)\n", object.course, object.group, object.surname, object.rating[0], object.rating[1], object.rating[2], object.rating[3]);
+		}
+
 	}
-
-	fclose(db);
+	close(fd);
 }
 
-void DB_write(record object) {
-	// checking the corret time format
 
-	FILE* db = DB_open(config, 4);
+/*
+ * Writes record in "records.txt" file
+ *
+ * @param fd 	file descriptor
+ * @param ex 	record structure
+ * @returns 	None
+*/
+void DB_write(int fd, record ex) {
+	char *maker =  (char*) calloc(1,4096);
 
-	char* record = (char*)calloc(1, 1024);
-	char* srecord = record;
-	char tmp;
+	fd = open("records.txt", O_WRONLY|O_APPEND|O_CREAT, S_IRUSR|S_IWUSR);
 
-	// opening the database file
-	db = DB_open(config, 4);
-	// go to the end
-	fseek(db, 0, SEEK_END);
-	// temp variable
-	char maker[32] = { 0, };
+	sprintf(maker, "%u#%s#%s#%u#%u#%u#%u\n", ex.course, ex.group, ex.surname, ex.rating[0], ex.rating[1], ex.rating[2], ex.rating[3]);
 
-	char* massive_of_pointers[2] = {
-		object.group, object.surname
-	};
-
-	fwrite(object.course, sizeof(unsigned int), 1, db);
-	fwrite("#", 1, 1, db);
-	fwrite(object.group, strlen(group), 1, db);
-	fwrite("#", 1, 1, db);
-	fwrite(object.surname, strlen(surname), 1, db);
-	fwrite("#", 1, 1, db);
-	memset(maker, 0, 1024);	
-	snprintf(maker, sizeof(maker), "%d#%d#%d#%d\n\0", object.rating[0],, object.rating[1], object.rating[2], object.rating[3]);
-	fwrite(maker, strlen(maker), 1, db);
-	fclose(db);
+	write(fd, maker, strlen(maker));
+	close(fd);
 }
-
 
