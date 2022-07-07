@@ -60,31 +60,6 @@ int Compare_strings(const char* string1, const char* string2){
 	return 0;
 }
 
-
-/*
- * Default insertion sorting
- *
- * @param array
- * @param size
- * @returns sorted array
-*/
-void Insertion_sorting(int* array, int size){
-
-	int tmp, i, j;
-
-
-	for(i=0;i<size;++i){
-		tmp = array[i];
-		j = i - 1;
-
-		while(j>=0 and tmp<=array[j]){
-			array[j+1] = array[j];
-			j--;
-		}
-		array[j+1] = tmp;
-	}
-}
-
 /*
  * Insertion sorting by course
  *

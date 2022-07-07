@@ -5,7 +5,6 @@
  * This function prints string with format for INFO
  *
  * @param	string
- * @returns	None
 */
 void Info(const char* string){
 	printf("[INFO] %s\n", string);
@@ -15,7 +14,6 @@ void Info(const char* string){
  * This function prints string with format for WARNING
  *
  * @param	string
- * @returns	None
 */
 void Warning(const char* string){
 	printf("[WARNING] %s\n", string);
@@ -26,7 +24,6 @@ void Warning(const char* string){
  * This function prints string with format for ERROR
  *
  * @param	string
- * @returns	None
 */
 void Error(const char* string){
 	printf("[ERROR] %s\n", string);
@@ -37,7 +34,6 @@ void Error(const char* string){
  * This function raises CRITICAL ERROR
  *
  * @param	string
- * @returns	None
 */
 void CritError(const char* string){
 	printf("[CRITICAL ERROR] %s\n", string);

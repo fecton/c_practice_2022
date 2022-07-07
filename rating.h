@@ -5,7 +5,6 @@
  * Prints argument with some symbols on sides
  *
  * @param	string
- * @returns	None
 */
 void lineString(const char* string){
 	printf("-=-=-=-=-= [");
@@ -20,7 +19,6 @@ void lineString(const char* string){
  * Or: 26 + strlen(string)
  *
  * @param string
- * @retuns None
 */
 void line(const char* string){
 	for(int i=0;i<(strlen(string)+12+12+2)/2;++i){
@@ -32,9 +30,6 @@ void line(const char* string){
 
 /*
  * Prints the menu of actions for user 
- *
- * @param	None
- * @returns	None
 */
 void Menu_of_actions(){
 	char opname[] = "Menu";
@@ -57,9 +52,6 @@ void Menu_of_actions(){
 
 /*
  * Prints information about author
- *
- * @param 	None
- * @returns 	None
 */
 void About(){
 	char opname[] = "About";
@@ -76,9 +68,6 @@ void About(){
 
 /*
  * Exit the program
- *
- * @param	None
- * @returns	None
 */
 void Exit(){
 	char opname[] = "Exit";
