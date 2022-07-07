@@ -2,9 +2,51 @@
  * Shows all records from the file
  *
  * @param fd	file descriptor
- * @returns 	None
 */
-void Show_table(int fd) {
+void Show_table(record* array, int size) {
+	for(int i=0;i<size;++i){
+		printf("%1u\t%6s\t%25s\t(%2d %2d %2d %2d)\n", array[i].course, array[i].group, array[i].surname, array[i].rating[0], array[i].rating[1], array[i].rating[2], array[i].rating[3]);
+	}
+	printf("\nTotally %d students\n", size);
+}
+
+
+/*
+ * Add a structure to array
+ *
+ * @param ex	record instance
+ * @param array	array of records
+ * @param size	array's size
+*/
+void Add_record(record ex, record* array, int* size){
+	array[*size] = ex;
+	(*size)++;
+}
+
+
+/*
+ * Writes record in "records.txt" file
+ *
+ * @param fd 	file descriptor
+ * @param array	array of records
+ * @param size	array's size
+*/
+void Write_records(int fd, record* array, int size, char* filename) {
+	for(int i=0;i<size;++i){
+		char *maker =  (char*) calloc(1,4096);
+		fd = open(filename, O_WRONLY|O_APPEND|O_CREAT, S_IRUSR|S_IWUSR);
+		sprintf(maker, "%u#%s#%s#%u#%u#%u#%u\n", array[i].course, array[i].group, array[i].surname, array[i].rating[0], array[i].rating[1], array[i].rating[2], array[i].rating[3]);
+		write(fd, maker, strlen(maker));
+	}
+}
+
+/*
+ * Reads record from "records.txt" file and fit it in array
+ *
+ * @param fd	file descriptor
+ * @param array	array of records
+*/
+void Read_records(int fd, record* array){
 	fd = open("records.txt", O_RDONLY);
 
 	char* rec = (char*)calloc(1, 1024);
@@ -13,20 +55,21 @@ void Show_table(int fd) {
 
 	record object;
 
-	int flag = 1;
+	int flag = 1, pos = 0;
 
 	char* massive_of_pointers[2] = {
 		object.group, object.surname
 	};
 
 	while (flag) {
+		/*
 		for(int i=0;i<2;++i){
 			while(tmp != '\n'){
 				read(fd, &tmp, 1);
 			}
 			read(fd, &tmp, 1);
 		}
-
+		*/
 		while (flag) {
 			// course
 			do
@@ -76,29 +119,25 @@ void Show_table(int fd) {
 				memset(srecord, 0, 1024);
 				rec = srecord;
 			}
-			printf("%u\t%s\t%s\t(%2d %2d %2d %2d)\n", object.course, object.group, object.surname, object.rating[0], object.rating[1], object.rating[2], object.rating[3]);
+			array[pos] = object;
+			pos++;
 		}
 
 	}
 	close(fd);
 }
 
-
 /*
- * Writes record in "records.txt" file
+ * Returns length of array of structures
  *
- * @param fd 	file descriptor
- * @param ex 	record structure
- * @returns 	None
+ * @param array
+ * @returns i	length
 */
-void DB_write(int fd, record ex) {
-	char *maker =  (char*) calloc(1,4096);
-
-	fd = open("records.txt", O_WRONLY|O_APPEND|O_CREAT, S_IRUSR|S_IWUSR);
-
-	sprintf(maker, "%u#%s#%s#%u#%u#%u#%u\n", ex.course, ex.group, ex.surname, ex.rating[0], ex.rating[1], ex.rating[2], ex.rating[3]);
-
-	write(fd, maker, strlen(maker));
-	close(fd);
+int Records_count(record* array){
+	int i = 0;
+	while(array[i].course){
+		i++;
+	}
+	return i;
 }
 

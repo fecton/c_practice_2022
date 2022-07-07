@@ -16,7 +16,8 @@
 int main(int argc, const char* argv[]){
 	lineString("Welcome to \"Rating Cheker\"");
 
-	int fd;
+	int fd, fd_tmp;
+	int size = 0;
 	char *datafile, *buffer;
 
 	datafile = (char*) ec_malloc(1024);
@@ -27,52 +28,118 @@ int main(int argc, const char* argv[]){
 
 	strcpy(datafile, "records.txt");
 
-	record records[1024];
+	record records[1024], sorted[1024];
 
 	if((fd = open(datafile, O_RDONLY)) == -1){
 		Info("File didn't exists! Creating new one...");
 		if((fd = open(datafile, O_WRONLY|O_APPEND|O_CREAT, S_IRUSR|S_IWUSR)) == -1){
 			CritError("In function main() during creating new file");	
 		}
-		else{
-			long int ltime = time(0);
-			char* last_modified_time = asctime(localtime(&ltime));
-			sprintf(buffer, "Last modified:\t%sCreated by:\t%s\n", last_modified_time, getenv("USER"));
-			
-			if(write(fd, buffer, strlen(buffer)) == -1){
-				CritError("In function main() during writing the file");
-			}
-			else{
-				Info("Was written successfully!");
-			}
-		}	
+		size = 0;	
 	}
 	else{
-		Info("Opened successfully, starting writing!");
+		Info("Opened successfully, starting reading!");
+
+		Read_records(fd, records);
+		size = Records_count(records);
+		if(close(fd) == -1){
+			CritError("In function main() during closing the file");
+		}
+	}
+
+	for(int i=0;i<1024;++i){
+		if(records[i].course == 0) break;
+		sorted[i] = records[i];
 	}
 
 	unsigned int user_choice = 0;
+	char* input = (char*) ec_malloc(128);
 	while(1){
 		switch(user_choice){
 		case 0:
 			Menu_of_actions();
 			break;
 		case 1:
-			Show_table(fd);
+			Show_table(records, size);
 			break;
 		case 2:
-			Sort_by_course(fd);
+			record ex;
+			printf(">>>><<<<\n");
+			
+			while(not(ex.course > 0 and ex.course <= 5)){
+				printf("Course: ");
+				scanf("%u", &ex.course);
+			}
+
+			do{
+				printf("Group (6 symbols): ");
+				scanf("%s", ex.group);
+			}while(strlen(ex.group) > 6);
+
+			
+			do{
+				printf("Surname (25 symbols): ");
+				scanf("%s", ex.surname);
+			}while(strlen(ex.surname) > 25);
+
+			printf("Rating (5 4 3 2): ");
+			scanf("%u%u%u%u", &ex.rating[0], &ex.rating[1], &ex.rating[2], &ex.rating[3]);
+
+			printf(">>>><<<<\n");
+			
+			Add_record(ex, records, &size);
 			break;
 		case 3:
-			Sort_by_group(fd);
+
+			
+			Sort_by_course(sorted, size);
+			
+			Show_table(sorted, size);
+			Info("Sorted successfully!");
+			printf("Would you like to export it? (y/N): ");
+			scanf("%s", input);
+			if(not(strcmp(input, "y")) || not(strcmp(input, "Y"))){
+				printf("Good! Enter filename: ");
+				scanf("%s", input);
+				fd_tmp = open(input, O_CREAT|O_WRONLY|O_TRUNC, S_IRUSR|S_IWUSR);
+				Write_records(fd_tmp, sorted, size, input);
+			}
+
 			break;
 		case 4:
-			Sort_by_surname(fd);
+			Sort_by_group(sorted, size);
+			Show_table(sorted, size);
+			Info("Sorted successfully!");
+			printf("Would you like to export it? (y/N): ");
+			scanf("%s", input);
+			if(not(strcmp(input, "y")) || not(strcmp(input, "Y"))){
+				printf("Good! Enter filename: ");
+				scanf("%s", input);
+				fd_tmp = open(input, O_CREAT|O_WRONLY|O_TRUNC, S_IRUSR|S_IWUSR);
+				Write_records(fd_tmp, sorted, size, input);
+			}
 			break;
 		case 5:
-			About();
+			Sort_by_surname(sorted, size);
+			Show_table(sorted, size);
+			Info("Sorted successfully!");
+			printf("Would you like to export it? (y/N): ");
+			scanf("%s", input);
+			if(not(strcmp(input, "y")) || not(strcmp(input, "Y"))){
+				printf("Good! Enter filename: ");
+				scanf("%s", input);
+				fd_tmp = open(input, O_CREAT|O_WRONLY|O_TRUNC, S_IRUSR|S_IWUSR);
+				Write_records(fd_tmp, sorted, size, input);
+			}
 			break;
 		case 6:
+			About();
+			break;
+		case 7:
+			fd_tmp = open("records.txt", O_CREAT|O_WRONLY|O_TRUNC, S_IRUSR|S_IWUSR);
+
+			Write_records(fd_tmp, records, size, "records.txt");
+			close(fd_tmp);
 			Exit();
 		default:
 			Warning("Bad option!");
@@ -85,9 +152,7 @@ int main(int argc, const char* argv[]){
 
 	free(datafile);
 	free(buffer);
-	if(close(fd) == -1){
-		CritError("In function main() during closing the file");
-	}
+
 
 	return 0;
 }

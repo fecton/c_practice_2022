@@ -38,58 +38,22 @@ void line(const char* string){
 */
 void Menu_of_actions(){
 	char opname[] = "Menu";
-	char menu[7][38] = {
+	char menu[8][25] = {
 		"  0. Menu", // +
-		"  1. Show the table (without sorting)",
-		"  2. Sort by a course",
-		"  3. Sort by a group",
-		"  4. Sort by surname",
-		"  5. About", // +
-		"  6. Exit"   // +
+		"  1. Show the table", // +
+		"  2. Add a record", // +
+		"  3. Sort by a course",
+		"  4. Sort by a group",
+		"  5. Sort by surname",
+		"  6. About", // +
+		"  7. Exit"   // +
 	};
 
 	lineString(opname);
-	for(int i=0;i<7;++i){
+	for(int i=0;i<8;++i){
 		printf("%s\n", menu[i]);
 	}
 }
-
-/*
- * Sorts all records by a COURSE and suggest user to
- * 1. Export data
- * 2. Show data
- *
- * @param fd		file descriptor
- * @param course	sorting parameter
-*/
-void Sort_by_course(int fd){
-	return;
-}
-
-/*
- * Sorts all records by a GROUP and suggest user to
- * 1. Export data
- * 2. Show data
- *
- * @param fd		file descriptor
- * @param course	sorting parameter
-*/
-void Sort_by_group(int fd){
-	return;
-}
-
-/*
- * Sorts all records by a SURNAME and suggest user to
- * 1. Export data
- * 2. Show data
- *
- * @param fd		file descriptor
- * @param course	sorting parameter
-*/
-void Sort_by_surname(int fd){
-	return;
-}
-
 
 /*
  * Prints information about author
@@ -100,16 +64,13 @@ void Sort_by_surname(int fd){
 void About(){
 	char opname[] = "About";
 	lineString(opname);
-	char about[3][40] = {
+	char about[2][40] = {
 		"GitHub: https://github.com",
 		"Telegram: https://t.me/fectosha",
-		"Telegram channel: https://t.me/varlife",
 	};
-	for(int i=0;i<3;++i){
+	for(int i=0;i<2;++i){
 		printf("[+] %s\n", about[i]);
 	}
-	line(opname);
-
 }
 
 

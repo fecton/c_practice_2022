@@ -18,7 +18,7 @@ int Compare_strings(const char* string1, const char* string2){
 		length = strlen(string1);
 	}
 
-	printf("string1[0] = %d (%c)\nstring2[0] = %d (%c)\n", string1[0], string1[0], string2[0], string2[0]);
+	/* printf("string1[0] = %d (%c)\nstring2[0] = %d (%c)\n", string1[0], string1[0], string2[0], string2[0]); */
 
 	for(int i=0;i<length;++i){
 		// string1 and string2 starts with upper or lower case
@@ -85,15 +85,39 @@ void Insertion_sorting(int* array, int size){
 	}
 }
 
-
 /*
- * Default insertion sorting
+ * Insertion sorting by course
  *
  * @param array
  * @param size
  * @returns sorted array
 */
-void Insertion_sorting_by_surname(record* array, int size){
+void Sort_by_course(record* array, int size){
+
+	int i, j;
+	record tmp;
+
+
+	for(i=0;i<size;++i){
+		tmp = array[i];
+		j = i - 1;
+
+		while(j>=0 and tmp.course<=array[j].course){
+			array[j+1] = array[j];
+			j--;
+		}
+		array[j+1] = tmp;
+	}
+}
+
+/*
+ * Insertion sorting by group
+ *
+ * @param array
+ * @param size
+ * @returns sorted array
+*/
+void Sort_by_group(record* array, int size){
 	record tmp;
 	int i, j;
 
@@ -110,4 +134,26 @@ void Insertion_sorting_by_surname(record* array, int size){
 	}
 }
 
+/*
+ * Insertion sorting by username 
+ *
+ * @param array
+ * @param size
+ * @returns sorted array
+*/
+void Sort_by_surname(record* array, int size){
+	record tmp;
+	int i, j;
 
+
+	for(i=0;i<size;++i){
+		tmp = array[i];
+		j = i - 1;
+
+		while(j>=0 and Compare_strings(tmp.surname, array[j].surname) == 1){
+			array[j+1] = array[j];
+			j--;
+		}
+		array[j+1] = tmp;
+	}
+}
