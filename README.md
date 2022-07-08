@@ -25,14 +25,14 @@
 ## My task:
 ![My Task](./readme_images/task.jpg)
 
-## Algorithm
+## Algorithms
 ![Structs](./algorithms/Structs.jpg)
 ![RatingC](./algorithms/ratingc.jpg)
 ![RatingH](./algorithms/ratingh.jpg)
 ![SortBy](./algorithms/Sorts_by.jpg)
 ![CompareStrings](./algorithms/Compare_strings.jpg)
 ![Database](./algorithms/database.jpg)
-![Statuses](./algorithms/statuses.jpg)
+![Statuses](./algorithms/Statuses.jpg)
 
 ## Google Tests
 ***None***
