@@ -32,12 +32,12 @@
 ***None***
 
 ## Screenshots
-![Start](./readme_images/start.png)
-![Show](./readme_images/show.png)
-![Add](./readme_images/add.png)
-![SortedByCourse](./readme_images/sorted_by_course.png)
-![SortedByGroup](./readme_images/sorted_by_group.png)
-![SortedBySurname](./readme_images/sorted_by_surname.png)
+![Start](./screenshots/start.png)
+![Show](./screenshots/show.png)
+![Add](./screenshots/add.png)
+![SortedByCourse](./screenshots/sorted_by_course.png)
+![SortedByGroup](./screenshots/sorted_by_group.png)
+![SortedBySurname](./screenshots/sorted_by_surname.png)
 
 # Report
 ***None***
