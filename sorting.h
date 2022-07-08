@@ -10,7 +10,7 @@
 */
 int Compare_strings(const char* string1, const char* string2){
 	int length = 0;
-
+	int numlength = 0;
 	if(strlen(string1) > strlen(string2)){
 		length = strlen(string2);
 	}
@@ -18,45 +18,64 @@ int Compare_strings(const char* string1, const char* string2){
 		length = strlen(string1);
 	}
 
-	/* printf("string1[0] = %d (%c)\nstring2[0] = %d (%c)\n", string1[0], string1[0], string2[0], string2[0]); */
-
 	for(int i=0;i<length;++i){
+		if(numlength == 2){
+			if(strlen(string1) == 3 and strlen(string2) != 3){
+				return 2;
+			}
+			if(strlen(string1) != 3 and strlen(string2) == 3){
+				return 1;
+			}
+		}
 		// string1 and string2 starts with upper or lower case
+		// A-Z or a-z
 		if(
-			((string1[i] >= 65 and string1[i] <= 90)
-			and
-			(string2[i] >= 65 and string2[i] <= 90))
-		or
-			((string1[i] >= 97 and string1[i] <= 122)
-			and
-			(string2[i] >= 97 and string2[i] <= 122))
+			(
+			 (string1[i] >= 0x41 and string1[i] <= 0x5A)
+				and
+			 (string2[i] >= 0x41 and string2[i] <= 0x5A)
+			)
+			or
+			(
+			 (string1[i] >= 0x61 and string1[i] <= 0x7A)
+				and
+			 (string2[i] >= 0x61 and string2[i] <= 0x7A)
+			)
 		)
 		{
-			// some actions	
-			if(string1[i] == string2[i]){
-				continue;
+			if(string1[i] > string2[i]){
+				return 2;
 			}
 			else{
+				return 1;
+			}
+		}
+		else{
+			// 0-9
+			if(
+				(string1[i] >= 0x30 and string1[i] <= 0x39)
+				and	
+				(string2[i] >= 0x30 and string2[i] <= 0x39)
+			  ){
+				if(string1[i] > string2[i]){
+					return 1;
+				}
+				else if(string1[i] < string2[i]){
+					return 2;
+				}
+			}
+			else{
+				// string1 and string2 has different cases 
 				if(string1[i] > string2[i]){
 					return 2;
 				}
-				else{
+				else if(string1[i] < string2[i]){
 					return 1;
 				}
 			}
 		}
-		else{
-		// string1 and string2 has different cases 
-		if(string1[i] > string2[i]){
-			return 2;
-		}
-		else{
-			return 1;
-		}
-		}
+		numlength++;
 	}
-
-
 	return 0;
 }
 
@@ -68,10 +87,8 @@ int Compare_strings(const char* string1, const char* string2){
  * @returns sorted array
 */
 void Sort_by_course(record* array, int size){
-
 	int i, j;
 	record tmp;
-
 
 	for(i=0;i<size;++i){
 		tmp = array[i];
@@ -93,15 +110,14 @@ void Sort_by_course(record* array, int size){
  * @returns sorted array
 */
 void Sort_by_group(record* array, int size){
-	record tmp;
 	int i, j;
-
+	record tmp;
 
 	for(i=0;i<size;++i){
 		tmp = array[i];
 		j = i - 1;
 
-		while(j>=0 and Compare_strings(tmp.surname, array[j].surname) == 2){
+		while(j>=0 and Compare_strings(tmp.group, array[j].group)==2){
 			array[j+1] = array[j];
 			j--;
 		}
@@ -117,9 +133,8 @@ void Sort_by_group(record* array, int size){
  * @returns sorted array
 */
 void Sort_by_surname(record* array, int size){
-	record tmp;
 	int i, j;
-
+	record tmp;
 
 	for(i=0;i<size;++i){
 		tmp = array[i];

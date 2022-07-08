@@ -8,13 +8,13 @@
 ![Evaluation](./readme_images/evaluation.jpg)
 
 ## My progress:
-* [Certificate](#certificate)       ✅
-* [Program](#program)           ⏳
-* GIT               ✅
-* [Report](#program)            ⏳
-* [Electronic sign](#electronic-sign)   ❌
-* [Presentation](#presentation)      ⏳
-* [Video](#video)             ⏳
+* [Certificate](#certificate) ✅
+* [Program](#program) ✅
+* GIT ✅
+* [Report](#program) ⏳
+* [Electronic sign](#electronic-sign) ❌
+* [Presentation](#presentation) ⏳
+* [Video](#video) ⏳
 
 # Stages
 ## Certificate
@@ -32,7 +32,12 @@
 ***None***
 
 ## Screenshots
-***None***
+![Start](./readme_images/start.png)
+![Show](./readme_images/show.png)
+![Add](./readme_images/add.png)
+![SortedByCourse](./readme_images/sorted_by_course.png)
+![SortedByGroup](./readme_images/sorted_by_group.png)
+![SortedBySurname](./readme_images/sorted_by_surname.png)
 
 # Report
 ***None***
