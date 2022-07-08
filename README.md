@@ -26,13 +26,13 @@
 ![My Task](./readme_images/task.jpg)
 
 ## Algorithm
-![Structs](./screenshots/Structs.jpg)
-![RatingC](./screenshots/ratingc.jpg)
-![RatingH](./screenshots/ratingh.jpg)
-![SortBy](./screenshots/Sorts_by.jpg)
-![CompareStrings](./screenshots/Compare_strings.jpg)
-![Database](./screenshots/database.jpg)
-![Statuses](./screenshots/statuses.jpg)
+![Structs](./algorithms/Structs.jpg)
+![RatingC](./algorithms/ratingc.jpg)
+![RatingH](./algorithms/ratingh.jpg)
+![SortBy](./algorithms/Sorts_by.jpg)
+![CompareStrings](./algorithms/Compare_strings.jpg)
+![Database](./algorithms/database.jpg)
+![Statuses](./algorithms/statuses.jpg)
 
 ## Google Tests
 ***None***
