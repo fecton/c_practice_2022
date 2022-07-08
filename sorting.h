@@ -73,77 +73,80 @@ int Compare_strings(const char* string1, const char* string2){
 					return 1;
 				}
 			}
+			numlength++;
 		}
-		numlength++;
 	}
 	return 0;
 }
 
 /*
- * Insertion sorting by course
+ * Choise sorting by course
  *
  * @param array
  * @param size
  * @returns sorted array
 */
 void Sort_by_course(record* array, int size){
-	int i, j;
+	int minPos;
 	record tmp;
-
-	for(i=0;i<size;++i){
-		tmp = array[i];
-		j = i - 1;
-
-		while(j>=0 and tmp.course<=array[j].course){
-			array[j+1] = array[j];
-			j--;
+	for(int i=0;i<size;i++){
+		minPos = i;
+		for(int j=i+1;j<size;j++){
+			if(array[minPos].course > array[j].course)
+				minPos = j;
 		}
-		array[j+1] = tmp;
+		tmp = array[minPos];
+		array[minPos] = array[i];
+		array[i] = tmp;
 	}
 }
 
+
+
 /*
- * Insertion sorting by group
+ * Choise sorting by group
  *
  * @param array
  * @param size
  * @returns sorted array
 */
 void Sort_by_group(record* array, int size){
-	int i, j;
+	int minPos;
 	record tmp;
-
-	for(i=0;i<size;++i){
-		tmp = array[i];
-		j = i - 1;
-
-		while(j>=0 and Compare_strings(tmp.group, array[j].group)==2){
-			array[j+1] = array[j];
-			j--;
+	for(int i=0;i<size;i++){
+		minPos = i;
+		for(int j=i+1;j<size;j++){
+			if(Compare_strings(array[minPos].group, array[j].group) == 1)
+				minPos = j;
 		}
-		array[j+1] = tmp;
+		tmp = array[minPos];
+		array[minPos] = array[i];
+		array[i] = tmp;
 	}
 }
 
+
+
 /*
- * Insertion sorting by username 
+ * Choise sorting by username 
  *
  * @param array
  * @param size
  * @returns sorted array
 */
 void Sort_by_surname(record* array, int size){
-	int i, j;
+	int minPos;
 	record tmp;
-
-	for(i=0;i<size;++i){
-		tmp = array[i];
-		j = i - 1;
-
-		while(j>=0 and Compare_strings(tmp.surname, array[j].surname) == 1){
-			array[j+1] = array[j];
-			j--;
+	for(int i=0;i<size;i++){
+		minPos = i;
+		for(int j=i+1;j<size;j++){
+			if(Compare_strings(array[minPos].surname, array[j].surname) == 2)
+				minPos = j;
 		}
-		array[j+1] = tmp;
+		tmp = array[minPos];
+		array[minPos] = array[i];
+		array[i] = tmp;
 	}
 }
+
+

@@ -26,7 +26,13 @@
 ![My Task](./readme_images/task.jpg)
 
 ## Algorithm
-***None***
+![Structs](./screenshots/Structs.jpg)
+![RatingC](./screenshots/ratingc.jpg)
+![RatingH](./screenshots/ratingh.jpg)
+![SortBy](./screenshots/Sorts_by.jpg)
+![CompareStrings](./screenshots/Compare_strings.jpg)
+![Database](./screenshots/database.jpg)
+![Statuses](./screenshots/statuses.jpg)
 
 ## Google Tests
 ***None***

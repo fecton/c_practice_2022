@@ -33,9 +33,8 @@ int main(int argc, const char* argv[]){
 	if((fd = open(datafile, O_RDONLY)) == -1){
 		Info("File didn't exists! Creating new one...");
 		if((fd = open(datafile, O_WRONLY|O_APPEND|O_CREAT, S_IRUSR|S_IWUSR)) == -1){
-			CritError("In function main() during creating new file");	
+			CritError("In function main() during creating a new file");	
 		}
-		size = 0;	
 	}
 	else{
 		Info("Opened successfully, starting reading!");

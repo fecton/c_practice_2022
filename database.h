@@ -62,14 +62,6 @@ void Read_records(int fd, record* array){
 	};
 
 	while (flag) {
-		/*
-		for(int i=0;i<2;++i){
-			while(tmp != '\n'){
-				read(fd, &tmp, 1);
-			}
-			read(fd, &tmp, 1);
-		}
-		*/
 		while (flag) {
 			// course
 			do
