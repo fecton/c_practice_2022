@@ -1,4 +1,15 @@
 /*
+* @file sorting.h
+* @author Литвиненко А.В., 515а
+* @date 09 липня 2022
+* @brief
+* За умовою задачі потрібно створити програму, яка дозволить впорядковувати дані про оцінки здобувачів кафедри комп’ютерних систем, мереж і кібербезпеки сортуванням.
+*/
+
+#ifndef SORTING
+#define SORTING
+
+/*
  * Compares two string and returns bigger
  *
  * @param	string1
@@ -148,5 +159,5 @@ void Sort_by_surname(record* array, int size){
 		array[i] = tmp;
 	}
 }
-
+#endif
 

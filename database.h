@@ -1,4 +1,15 @@
 /*
+* @file database.h
+* @author Литвиненко А.В., 515а
+* @date 09 липня 2022
+* @brief
+* За умовою задачі потрібно створити програму, яка дозволить впорядковувати дані про оцінки здобувачів кафедри комп’ютерних систем, мереж і кібербезпеки сортуванням.
+*/
+
+#ifndef DATABASE
+#define DATABASE
+
+/*
  * Shows all records from the file
  *
  * @param fd	file descriptor
@@ -132,4 +143,4 @@ int Records_count(record* array){
 	}
 	return i;
 }
-
+#endif
