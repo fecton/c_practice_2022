@@ -11,7 +11,7 @@
 * [Certificate](#certificate) ✅
 * [Program](#program) ✅
 * GIT ✅
-* [Report](#program) ⏳
+* [Report](#report) ✅
 * [Electronic sign](#electronic-sign) ❌
 * [Presentation](#presentation) ⏳
 * [Video](#video) ⏳
@@ -46,7 +46,7 @@
 ![SortedBySurname](./screenshots/sorted_by_surname.png)
 
 # Report
-***None***
+![Report](./readme_images/report.png)
 
 # Electronic sign
 Needs alternative
