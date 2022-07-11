@@ -13,7 +13,7 @@
 * GIT ✅
 * [Report](#report) ✅
 * [Electronic sign](#electronic-sign) ❌
-* [Presentation](#presentation) ⏳
+* [Presentation](#presentation) ✅
 * [Video](#video) ⏳
 
 # Stages
@@ -52,7 +52,7 @@
 Needs alternative
 
 # Presentation
-***None***
+![Presentation](./readme_images/presentation.png)
 
 # Video
 ***None***
