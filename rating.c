@@ -100,7 +100,10 @@ int main(int argc, const char* argv[]){
 				if(records[i].course == 0) break;
 				sorted[i] = records[i];
 			}
-
+			ex.course = 0;
+			memset(ex.group, 0, 6);
+			memset(ex.surname, 0, 25);
+			
 			break;
 		case 3:
 
