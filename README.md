@@ -12,7 +12,7 @@
 * [Program](#program) ✅
 * GIT ✅
 * [Report](#report) ✅
-* [Electronic sign](#electronic-sign) ❌
+* [Electronic sign](#electronic-sign) ✅
 * [Presentation](#presentation) ✅
 * [Video](#video) ⏳
 
@@ -49,7 +49,7 @@
 ![Report](./readme_images/report.png)
 
 # Electronic sign
-Needs alternative
+![Report](./readme_images/signed_report.png)
 
 # Presentation
 ![Presentation](./readme_images/presentation.png)
