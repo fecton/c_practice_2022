@@ -111,7 +111,7 @@ int main(int argc, const char* argv[]){
 				fd_tmp = open(input, O_CREAT|O_WRONLY|O_TRUNC, S_IRUSR|S_IWUSR);
 				Write_records(fd_tmp, sorted, size, input);
 			}
-
+			memset(input, 0, 128);
 			break;
 		case 4:
 			Sort_by_group(sorted, size);
@@ -125,6 +125,7 @@ int main(int argc, const char* argv[]){
 				fd_tmp = open(input, O_CREAT|O_WRONLY|O_TRUNC, S_IRUSR|S_IWUSR);
 				Write_records(fd_tmp, sorted, size, input);
 			}
+			memset(input, 0, 128);
 			break;
 		case 5:
 			Sort_by_surname(sorted, size);
@@ -138,6 +139,7 @@ int main(int argc, const char* argv[]){
 				fd_tmp = open(input, O_CREAT|O_WRONLY|O_TRUNC, S_IRUSR|S_IWUSR);
 				Write_records(fd_tmp, sorted, size, input);
 			}
+			memset(input, 0, 128);
 			break;
 		case 6:
 			About();
