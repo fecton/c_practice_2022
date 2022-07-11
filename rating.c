@@ -54,7 +54,7 @@ int main(int argc, const char* argv[]){
 		}
 	}
 
-	for(int i=0;i<1024;++i){
+	for(int i=0;i<size;++i){
 		if(records[i].course == 0) break;
 		sorted[i] = records[i];
 	}
@@ -95,6 +95,12 @@ int main(int argc, const char* argv[]){
 			printf(">>>><<<<\n");
 			
 			Add_record(ex, records, &size);
+
+			for(int i=0;i<size;++i){
+				if(records[i].course == 0) break;
+				sorted[i] = records[i];
+			}
+
 			break;
 		case 3:
 
