@@ -55,5 +55,5 @@
 ![Presentation](./readme_images/presentation.png)
 
 # Video
-![Presentation](./readme_images/video.png)
+![Video](./readme_images/video.png)
 
