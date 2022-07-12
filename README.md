@@ -14,7 +14,7 @@
 * [Report](#report) ✅
 * [Electronic sign](#electronic-sign) ✅
 * [Presentation](#presentation) ✅
-* [Video](#video) ⏳
+* [Video](#video) ✅
 
 # Stages
 ## Certificate
@@ -55,5 +55,5 @@
 ![Presentation](./readme_images/presentation.png)
 
 # Video
-***None***
+![Presentation](./readme_images/video.png)
 
